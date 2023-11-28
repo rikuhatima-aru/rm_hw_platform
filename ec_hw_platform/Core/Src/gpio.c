@@ -32,9 +32,12 @@
 
 /* USER CODE END 1 */
 
-/** Configure pins
-     PB4   ------> SPI1_MISO
-     PB3   ------> SPI1_SCK
+/** Configure pins as
+        * Analog
+        * Input
+        * Output
+        * EVENT_OUT
+        * EXTI
      PI7   ------> S_TIM8_CH3
      PI6   ------> S_TIM8_CH2
      PC6   ------> S_TIM8_CH1
@@ -42,7 +45,6 @@
      PE9   ------> S_TIM1_CH1
      PE11   ------> S_TIM1_CH2
      PE14   ------> S_TIM1_CH4
-     PA7   ------> SPI1_MOSI
 */
 void MX_GPIO_Init(void)
 {
@@ -68,14 +70,6 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(CS1_Gyro_GPIO_Port, CS1_Gyro_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pins : PBPin PBPin */
-  GPIO_InitStruct.Pin = SPI1_MISO_Pin|SPI1_CLK_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PIPin PIPin */
   GPIO_InitStruct.Pin = TIM8_CH3_Pin|TIM8_CH2_Pin;
@@ -120,14 +114,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.Alternate = GPIO_AF1_TIM1;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PtPin */
-  GPIO_InitStruct.Pin = SPI1_MOSI_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
-  HAL_GPIO_Init(SPI1_MOSI_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = CS1_Gyro_Pin;
